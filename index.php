@@ -11,7 +11,7 @@ class balance extends connection{
 
 		try{
 			
-			$stmt=$this->connection->prepare("SELECT bal FROM `balance` ORDER by id DESC LIMIT 1");
+			$stmt=$this->connection->prepare("SELECT bal FROM `balance` ORDER by id DESC LIMIT 1 FOR UPDATE");
 			$stmt->execute();
 			$bal=(integer) $stmt->fetchColumn()+1;
 			$stmt->closeCursor();
